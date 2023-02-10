@@ -1,0 +1,4 @@
+ID			NOM			PRENOM			LOGIN			MOT DE PASS			CIN			EMAIL			TELEPHONE			SEXE			ID_AGENCE
+1			aaaa			aaaa			aaaa			aaaa			AD244199			aaaa@aaa.aaa			0666666666			FEMME		NULL
+2			zzzz			zzzz			zzzz			zzzz			AD122144			zzzz@zzz.com			0633333333			HOMME		NULL
+3			aaaa2			aaaa3			aaaa1			aaaa			A155203			bbbb@bbb.bbb			0656565654			HOMME		NULL
