@@ -1,13 +1,14 @@
 package presentation.vue;
 
+import Dao.Files.CompteDao;
 import Dao.Files.FileBasePaths;
+import presentation.modele.Compte;
 import presentation.vue.palette.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import java.util.Objects;
 
 public class MainFrame extends JFrame {
@@ -18,16 +19,35 @@ public class MainFrame extends JFrame {
     private Container mainContainer ;
     private static final Color bgColor = new Color(100,100,99);
     private static final Font buttonsFont = new Font("optima",Font.BOLD , 17 );
+
+    private void changePanel(JPanel panel)
+    {
+        getContentPane().removeAll();
+        setContentPane(panel);
+        getContentPane().revalidate();
+        getContentPane().repaint();
+    }
+    private Compte compte ;
+
     private SideMenuPanel menuPanel ;
     private LoginPanel loginPanel;
     private CreateClientPanel createClientPanel ;
     private AccountChoicePanel accountChoicePanel ;
+    private VirementPanel virementPanel ;
+    private CreateComptePanel createComptePanel ;
+    private OperationPanel operationPanel ;
     private TablePanel tablePanel ;
+    private CreateComptePanel comptePanel;
+    private RetaitPanel retaitPanel ;
+    private VersementPanel  versementPanel;
     private void initPanel()
     {
+
+
         loginPanel = new LoginPanel(frameWidth,frameHeight);
         createClientPanel = new CreateClientPanel();
         tablePanel = new TablePanel();
+        operationPanel = new OperationPanel();
         loginPanel.setLayout(null);
         loginPanel.setBounds(0,0,screenSize.width,screenSize.height);
         loginPanel.getBtn_login().addActionListener(new ActionListener() {
@@ -39,36 +59,61 @@ public class MainFrame extends JFrame {
                     String pass = new String(test );
                     System.out.println(login +" "+ pass);
                     var user = loginPanel.getLoginFormValidator().validerSession(login,pass);
+                    System.out.println(user);
+
+                    if(user == null)
+                        JOptionPane.showMessageDialog(null ,"identifiant incorrecte" );
                     if(Objects.equals(user.getRole(), "Admin"))
                     {
-                        getContentPane().removeAll();
-                        setContentPane(tablePanel);
-                        getContentPane().revalidate(); //IMPORTANT
-                        getContentPane().repaint();
+                        comptePanel = new CreateComptePanel();
+                        changePanel(comptePanel);
                     }
                     else if ( user.getRole() == "Client")
                     {
 
                         accountChoicePanel = new AccountChoicePanel(user.getId());
-                        getContentPane().removeAll();
 
-                        setContentPane(accountChoicePanel);
+                        changePanel(accountChoicePanel);
                         accountChoicePanel.getBtn_valider().addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
 
+                            compte = new CompteDao().findById(String.valueOf(accountChoicePanel.getComboBoxAccount().getSelectedItem()));
+                            changePanel(operationPanel);
                             }
                         });
 
 
-                        getContentPane().revalidate();
-                        getContentPane().repaint();
                     }
+
 
             }
         });
+            operationPanel.getBtn_virement().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    virementPanel = new VirementPanel(compte);
+                    virementPanel.setCompte1(compte);
+                changePanel(virementPanel);
 
-
+                }
+            });
+            operationPanel.getBtn_retrait().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                retaitPanel = new RetaitPanel();
+                retaitPanel.setCompte(compte);
+                changePanel(retaitPanel);
+                }
+            });
+            operationPanel.getBtn_veresemnt().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    versementPanel = new VersementPanel();
+                    versementPanel.setCompte(compte);
+                    changePanel(versementPanel);
+                }
+            });
 
     }
 
@@ -79,8 +124,9 @@ public class MainFrame extends JFrame {
     initPanel();
     mainContainer = getContentPane();
     mainContainer.setBackground(bgColor);
-    mainContainer.setLayout(null);
-    mainContainer.add(loginPanel);
+    mainContainer.setLayout(new BorderLayout());
+    mainContainer.add(loginPanel,BorderLayout.CENTER);
+
 
 
 }

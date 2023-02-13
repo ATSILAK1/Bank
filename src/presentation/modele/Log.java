@@ -23,8 +23,7 @@ public class Log {
 
     @Override
     public String toString() {
-        String logStr = "[" + date + "]["+time+"][{"+type+"}] : " +  message;
 
-        return logStr;
+        return "[" + date + "]["+time+"][{"+type+"}] : " +  message+"\n";
     }
 }

@@ -189,7 +189,11 @@ public class ClientDao implements IDao<Client, Long> {
                         .collect(Collectors.toList());
 
 
-        try { Files.deleteIfExists(FileBasePaths.INDEX_CLIENT);} catch (IOException e) {e.printStackTrace();}
+        /* try {
+            //Files.deleteIfExists(FileBasePaths.INDEX_CLIENT);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
         FileBasePaths.changeFile(FileBasePaths.CLIENT_TABLE, FileBasePaths.CLIENT_TABLE_HEADER);
 
         saveAll(clientsUpdated);

@@ -45,7 +45,7 @@ public interface FileBasePaths {
     String CLIENT_TABLE_HEADER  =  "ID\t\t\tNOM\t\t\tPRENOM\t\t\tLOGIN\t\t\tMOT DE PASS\t\t\tCIN\t\t\tEMAIL\t\t\tTELEPHONE\t\t\tSEXE\t\t\tID_AGENCE\n";
     String ACCOUNT_TABLE_HEADER = "ID\t\t\tDATE_CREATION\t\t\tSOLDE\t\t\tID_CLIENT\n";
     String AGENCY_TABLE_HEADER  = "ID\t\t\tNOM\t\t\tEMAIL\t\t\tTELEPHONE\t\t\tADRESSE\n";
-
+    String LOG_HEADER = "DATE\t\t\tTEMPS\t\t\tTYPE\t\t\tMESSAGE\n";
     static void creeDB(){
         creeDossierOuFichier(DB_FOLDER,"NULL",false);
         creeDossierOuFichier(LOGS_FOLDER,"NULL",false);

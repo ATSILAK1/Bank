@@ -1,6 +1,7 @@
 package presentation.vue.palette;
 
 import Dao.Files.CompteDao;
+import presentation.modele.Compte;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ public class AccountChoicePanel extends JPanel {
     private CompteDao compteDao ;
     private JButton btn_valider ;
 
+    private Compte compte;
 
     private long id ;
 
@@ -31,7 +33,18 @@ public class AccountChoicePanel extends JPanel {
     this.id= id ;
     initpanel();
     }
+    public void setCompte ( Compte compte )
+    {
 
+        this.compte = compte ;
+    }
+    public Compte getCompte() {
+        return compte;
+    }
+    public JComboBox getComboBoxAccount()
+    {
+        return comboBoxAccount ;
+    }
     private void initComponent()
     {
 

@@ -23,7 +23,14 @@ public class SideMenuPanel extends JPanel {
         });
     }
 
-
+    public JButton getBtn(String btnName)
+    {
+        for (var btn : buttons.entrySet()) {
+            if (btn.getKey() == btnName)
+                return btn.getValue();
+        }
+        return null ;
+    }
     public SideMenuPanel(Color bgColor , Color buttonTextColor , Font font , List<String> buttonsName)
     {
         this.backGroundColor = bgColor ;
@@ -36,7 +43,7 @@ public class SideMenuPanel extends JPanel {
     {
         initbuttons(buttonsName);
         setBackground(backGroundColor);
-        setLayout(new FlowLayout(FlowLayout.CENTER));
+        setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         buttons.forEach((name,buttons) -> add(buttons));
     }
 }

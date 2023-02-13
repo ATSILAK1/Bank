@@ -84,8 +84,11 @@ public class CreateComptePanel extends JPanel {
 
                         long inc = Long.parseLong(id);
                         inc++;
+
                         Files.writeString(FileBasePaths.INDEX_ACCOUNT, Long.toString(inc));
                         Path logFile =Files.createFile(Path.of(FileBasePaths.LOGS_FOLDER + "/logFile" + id));
+                        Files.deleteIfExists(Path.of(FileBasePaths.LOGS_FOLDER + "/logFile" + id));
+                        Files.write(logFile, FileBasePaths.LOG_HEADER.getBytes());
                         Files.write(logFile, compte.getLogs().get(0).toString().getBytes(), StandardOpenOption.APPEND);
                     }
                 } catch (IOException ex) {

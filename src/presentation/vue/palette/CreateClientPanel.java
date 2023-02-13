@@ -112,6 +112,7 @@ public class CreateClientPanel extends JPanel {
                     }
 
                 }else {
+                    JOptionPane.showMessageDialog(null,"Erreur dans la creation de client ");
                     System.out.println("impossible de cree le client");
                     validator.getErrors().forEach((s, s2) -> {
                         System.out.println(s +" "+ s2);

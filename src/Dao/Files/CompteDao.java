@@ -93,24 +93,29 @@ public class CompteDao implements IDao<Compte,String> {
     }
     @Override
     public List<Compte> saveAll(List<Compte> liste) {
-        return liste.stream().map(this::save).collect(Collectors.toList());
+        return
+        liste
+                .stream()
+                .map(this::save)
+                .collect(Collectors.toList());
+
     }
 
     @Override
     public Compte update(Compte compte) {
         List<Compte> compteList = findAll().stream().map(compte1 -> {
-            if (compte1.getNumeroCompte() == compte.getNumeroCompte())
-                return compte1;
-            else
+            if (Objects.equals(compte1.getNumeroCompte(), compte.getNumeroCompte()))
                 return compte;
+            else
+                return compte1;
 
 
         }).collect(Collectors.toList());
-        try{
-            Files.deleteIfExists(FileBasePaths.ACCOUNT_TABLE);
+      /*   try{
+            Files.deleteIfExists(FileBasePaths.INDEX_ACCOUNT);
         }catch (IOException e){
             e.printStackTrace();
-        }
+        }*/
         FileBasePaths.changeFile(FileBasePaths.ACCOUNT_TABLE,FileBasePaths.ACCOUNT_TABLE_HEADER);
         saveAll(compteList);
         return compte;
