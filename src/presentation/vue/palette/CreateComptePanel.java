@@ -25,7 +25,7 @@ public class CreateComptePanel extends JPanel {
     private JButton btn_valider;
     ClientDao clientDao = new ClientDao();
     CompteDao compteDao = new CompteDao();
-    int posX = 300 , posY = 300 , width = 100 , height = 25 ;
+    int posX = 300 , posY = 100 , width = 100 , height = 25 ;
     private void initcomponent() {
 
 

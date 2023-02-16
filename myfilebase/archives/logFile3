@@ -1,0 +1,51 @@
+DATE			TEMPS			TYPE			MESSAGE
+[2023-02-13][02:51:37.826240600][{CREATION}] : Compte cree
+[2023-02-13][02:52:12.600720500][{VIREMENT}] : virement effectuer 2000
+[2023-02-13][02:52:25.265498100][{VIREMENT}] : virement effectuer 300
+[2023-02-13][14:55:09.294358][{VIREMENT}] : virement effectuer 100
+[2023-02-13][15:02:45.848714300][{VIREMENT}] : virement effectuer 200
+[2023-02-13][15:08:43.646760500][{VIREMENT}] : virement effectuer 200
+[2023-02-13][15:12:44.728910600][{VIREMENT}] : virement effectuer 200
+[2023-02-13][15:14:26.549516600][{VIREMENT}] : virement effectuer 400
+[2023-02-13][19:17:48.199127100][{VERSEMENT}] : versement effectuer de 200
+[2023-02-14][22:09:55.274401700][{VERSEMENT}] : versement effectuer de 1000
+[2023-02-14][23:05:33.995570900][{RETRAIT}] : Retrait effectuer de 1000
+[2023-02-14][23:19:50.556514][{VERSEMENT}] : versement effectuer de 1000
+[2023-02-14][23:28:01.248965][{VIREMENT}] : virement effectuer 1000
+[2023-02-14][23:30:01.819448500][{VIREMENT}] : virement effectuer 200
+[2023-02-14][23:34:29.424820100][{VIREMENT}] : virement effectuer 1000
+[2023-02-14][23:40:48.882999600][{VERSEMENT}] : versement effectuer de 1000
+[2023-02-14][23:43:55.254183500][{VERSEMENT}] : versement effectuer de 1000
+[2023-02-14][23:45:28.132942][{VERSEMENT}] : versement effectuer de 1110
+[2023-02-14][23:58:20.272224300][{VERSEMENT}] : versement effectuer de 1000
+[2023-02-15][01:54:05.197674400][{VIREMENT}] : virement effectuer 200
+[2023-02-15][01:58:16.458413500][{VIREMENT}] : virement effectuer 10
+[2023-02-15][01:58:24.912487700][{VIREMENT}] : virement effectuer 10
+[2023-02-15][13:04:25.035296800][{VIREMENT}] : virement effectuer 100
+[2023-02-15][14:11:03.630790500][{RETRAIT}] : Retrait effectuer de 100
+[2023-02-15][17:21:01.481592500][{VIREMENT}] : virement effectuer 100
+[2023-02-15][17:23:16.365547100][{VERSEMENT}] : versement effectuer de 100
+[2023-02-15][17:25:00.661351600][{VERSEMENT}] : versement effectuer de 100
+[2023-02-15][17:29:15.515885800][{RETRAIT}] : Retrait effectuer de 100
+[2023-02-15][17:30:02.971126700][{RETRAIT}] : Retrait effectuer de 100
+[2023-02-15][17:30:47.556832600][{RETRAIT}] : Retrait effectuer de 100
+[2023-02-15][17:47:06.168412800][{VERSEMENT}] : versement effectuer de 100
+[2023-02-15][17:49:38.753099800][{VERSEMENT}] : versement effectuer de 100
+[2023-02-15][17:51:10.570012100][{VERSEMENT}] : versement effectuer de 300
+[2023-02-15][18:08:27.511748400][{VERSEMENT}] : versement effectuer de 100
+[2023-02-15][18:12:24.825974200][{VERSEMENT}] : versement effectuer de 100
+[2023-02-15][18:18:27.657127100][{VERSEMENT}] : versement effectuer de 100
+[2023-02-15][18:19:44.659607500][{VERSEMENT}] : versement effectuer de 1200
+[2023-02-15][18:22:50.075106900][{VERSEMENT}] : versement effectuer de 1000
+[2023-02-15][18:24:26.077648100][{VERSEMENT}] : versement effectuer de 1000
+[2023-02-15][18:33:31.373029200][{VERSEMENT}] : versement effectuer de 1000
+[2023-02-15][18:34:34.018159200][{VERSEMENT}] : versement effectuer de 100
+[2023-02-15][18:40:06.104468100][{VERSEMENT}] : versement effectuer de 1000
+[2023-02-15][18:40:13.943673900][{VIREMENT}] : virement effectuer 1000
+[2023-02-15][18:41:28.460030300][{VERSEMENT}] : versement effectuer de 100
+[2023-02-15][19:43:28.894817600][{VERSEMENT}] : versement effectuer de 1000
+[2023-02-15][19:45:59.493088500][{VERSEMENT}] : versement effectuer de 100
+[2023-02-15][19:46:04.203413900][{VERSEMENT}] : versement effectuer de 1000
+[2023-02-15][19:46:09.055040][{VERSEMENT}] : versement effectuer de 1000
+[2023-02-15][19:47:14.797821400][{VIREMENT}] : virement effectuer 1000
+[2023-02-15][19:49:04.023006900][{RETRAIT}] : Retrait effectuer de 100

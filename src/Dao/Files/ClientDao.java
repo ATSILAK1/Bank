@@ -71,7 +71,7 @@ public class ClientDao implements IDao<Client, Long> {
     @Override
     public Client findById(Long idClient) {
         return findAll().stream()
-                .filter(client -> client.getId() == idClient)
+                .filter(client -> Objects.equals(client.getId(), idClient))
                 .findFirst()
                 .orElse(null);
 
@@ -202,12 +202,30 @@ public class ClientDao implements IDao<Client, Long> {
     }
 
     @Override
-    public Boolean delete(Client clientToDelete) {
+    public Boolean delete(Client clientToDelete)  {
 
         var clients = findAll();
+        CompteDao dao = new CompteDao();
+        for(var compte : dao.findAll())
+        {
+            if (compte.getProprietaire().getId() == clientToDelete.getId()) {
+                dao.delete(compte);
+                try{
+                Files.deleteIfExists(Path.of(FileBasePaths.LOGS_FOLDER + "/logFile" + compte.getNumeroCompte()));
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
         boolean deleted  =
                 clients.remove(clientToDelete);
 
+
+
+        System.out.println(clientToDelete);
+        System.out.println(clients);
         if(deleted) {
             /*
                         try {
@@ -225,27 +243,22 @@ public class ClientDao implements IDao<Client, Long> {
     }
 
     @Override
-    public Boolean deleteById(Long idClient) {
+    public Boolean deleteById(Long aLong) {
+
 
         var clients = findAll();
-        boolean deleted  =
-                clients.remove(findById(idClient));
 
-        if(deleted) {
-           /* try {
-                Files.deleteIfExists(FileBasePaths.INDEX_CLIENT);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
-            */
+        boolean deleted  = clients.remove(findById(aLong));
+
             FileBasePaths.changeFile(FileBasePaths.CLIENT_TABLE, FileBasePaths.CLIENT_TABLE_HEADER);
-            saveAllWithIds(clients);
-        }
+            saveAll(clients);
+
 
         return deleted;
-
     }
+
+
     public List<Client> findByKeywordLike(String keyWord){
 
         List<Client> clients = findAll();
@@ -268,4 +281,13 @@ public class ClientDao implements IDao<Client, Long> {
 
     }
 
+    public static void main(String[] args) {
+        ClientDao clientDao = new ClientDao();
+
+
+    }
+
+
+
 }
+

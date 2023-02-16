@@ -92,4 +92,11 @@ public class Client extends Utilisateur {
 
     }
 
+@Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Client c) {
+            return this.id.equals(c.getId());
+        }
+        return false;
+    }
 }

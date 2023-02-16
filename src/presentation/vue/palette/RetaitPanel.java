@@ -5,6 +5,7 @@ import Dao.Files.FileBasePaths;
 import presentation.modele.Compte;
 import presentation.modele.Log;
 import presentation.modele.TypeLog;
+import presentation.vue.MainFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -56,7 +57,10 @@ public class RetaitPanel extends JPanel {
                  }
                  compte.setSolde(compte.getSolde() -Double.parseDouble(fld_solde.getText()));
                  new CompteDao().update(compte);
-
+                 removeAll();
+                 add(new OperationPanel(compte));
+                 revalidate();
+                 repaint();
              }
          }
      });
@@ -67,13 +71,15 @@ public class RetaitPanel extends JPanel {
     private void initpanel()
     {
         setLayout(null);
+        setBounds(0,0,800,600);
         initcomponents();
         add(btn_valider);
         add(fld_solde);
         initaction();
     }
-    public RetaitPanel()
+    public RetaitPanel(Compte compte)
     {
+        this.compte = compte ;
         initpanel();
     }
 }

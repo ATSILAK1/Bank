@@ -21,6 +21,23 @@ public class Log {
         this.type = type;
     }
 
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public TypeLog getType() {
+        return type;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
     @Override
     public String toString() {
 

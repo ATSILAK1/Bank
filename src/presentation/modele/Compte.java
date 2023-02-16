@@ -95,4 +95,14 @@ public class Compte {
         return proprietaire.getNomComplet();
     }
 
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Compte c) {
+            return this.numeroCompte.equals(c.getNumeroCompte());
+        }
+        return false;
+    }
 }
+
+

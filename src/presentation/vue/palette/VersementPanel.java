@@ -2,17 +2,21 @@ package presentation.vue.palette;
 
 import Dao.Files.CompteDao;
 import Dao.Files.FileBasePaths;
+import com.sun.tools.javac.Main;
 import presentation.modele.Compte;
 import presentation.modele.Log;
 import presentation.modele.TypeLog;
+import presentation.vue.MainFrame;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.rmi.MarshalledObject;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -20,17 +24,18 @@ public class VersementPanel extends JPanel {
 
 
     private  JButton btn_valider ;
+    private JLabel lbl_solde ;
 
     private JTextField fld_solde ;
     private Compte compte ;
 
     private void initcomponents()
     {
-        btn_valider = new JButton("valdier");
+        btn_valider = new JButton("valider");
         fld_solde = new JTextField();
+        lbl_solde = new JLabel("Montant a verser :");
 
 
-        initaction();
     }
     public void setCompte (Compte compte)
     {
@@ -42,8 +47,8 @@ public class VersementPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (Double.parseDouble(fld_solde.getText()) < 0)
-                    JOptionPane.showMessageDialog(null,"montant negatif");
+                if (Double.parseDouble(fld_solde.getText()) < 0 )
+                    JOptionPane.showMessageDialog(null,"montant negatif ou Format incorret");
                 else
                 {
                     try {
@@ -53,6 +58,11 @@ public class VersementPanel extends JPanel {
                     }
                     compte.setSolde(compte.getSolde() + Double.parseDouble(fld_solde.getText()));
                     new CompteDao().update(compte);
+
+                    removeAll();
+                    add(new OperationPanel(compte));
+                    revalidate();
+                    repaint();
 
                 }
             }
@@ -64,16 +74,21 @@ public class VersementPanel extends JPanel {
     private void initpanel()
     {
         initcomponents();
+        initaction();
         setLayout(null);
-        btn_valider.setBounds(200,200,100,25);
-        fld_solde.setBounds(200,250,200,25);
+        setBounds(0,0,800,600);
+        btn_valider.setBounds(200,250,100,25);
+        fld_solde.setBounds(230,200,200,25);
+        lbl_solde.setBounds(90,200,120,25);
         add(btn_valider);
         add(fld_solde);
+        add(lbl_solde);
 
 
     }
-    public VersementPanel()
+    public VersementPanel(Compte compte)
     {
+        this.compte = compte;
         initpanel();
     }
 

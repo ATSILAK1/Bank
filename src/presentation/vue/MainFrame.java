@@ -33,13 +33,15 @@ public class MainFrame extends JFrame {
     private LoginPanel loginPanel;
     private CreateClientPanel createClientPanel ;
     private AccountChoicePanel accountChoicePanel ;
-    private VirementPanel virementPanel ;
+
     private CreateComptePanel createComptePanel ;
-    private OperationPanel operationPanel ;
+    private static OperationPanel operationPanel ;
     private TablePanel tablePanel ;
     private CreateComptePanel comptePanel;
-    private RetaitPanel retaitPanel ;
-    private VersementPanel  versementPanel;
+    static public OperationPanel getOperationPanel()
+    {
+        return operationPanel;
+    }
     private void initPanel()
     {
 
@@ -47,7 +49,6 @@ public class MainFrame extends JFrame {
         loginPanel = new LoginPanel(frameWidth,frameHeight);
         createClientPanel = new CreateClientPanel();
         tablePanel = new TablePanel();
-        operationPanel = new OperationPanel();
         loginPanel.setLayout(null);
         loginPanel.setBounds(0,0,screenSize.width,screenSize.height);
         loginPanel.getBtn_login().addActionListener(new ActionListener() {
@@ -66,7 +67,7 @@ public class MainFrame extends JFrame {
                     if(Objects.equals(user.getRole(), "Admin"))
                     {
                         comptePanel = new CreateComptePanel();
-                        changePanel(comptePanel);
+                        changePanel(tablePanel);
                     }
                     else if ( user.getRole() == "Client")
                     {
@@ -79,6 +80,7 @@ public class MainFrame extends JFrame {
                             public void actionPerformed(ActionEvent e) {
 
                             compte = new CompteDao().findById(String.valueOf(accountChoicePanel.getComboBoxAccount().getSelectedItem()));
+                            operationPanel = new OperationPanel(compte);
                             changePanel(operationPanel);
                             }
                         });
@@ -89,31 +91,6 @@ public class MainFrame extends JFrame {
 
             }
         });
-            operationPanel.getBtn_virement().addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    virementPanel = new VirementPanel(compte);
-                    virementPanel.setCompte1(compte);
-                changePanel(virementPanel);
-
-                }
-            });
-            operationPanel.getBtn_retrait().addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                retaitPanel = new RetaitPanel();
-                retaitPanel.setCompte(compte);
-                changePanel(retaitPanel);
-                }
-            });
-            operationPanel.getBtn_veresemnt().addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    versementPanel = new VersementPanel();
-                    versementPanel.setCompte(compte);
-                    changePanel(versementPanel);
-                }
-            });
 
     }
 

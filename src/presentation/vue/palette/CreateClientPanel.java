@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.OpenOption;
+import java.util.Map;
 
 public class CreateClientPanel extends JPanel {
 
@@ -112,11 +113,14 @@ public class CreateClientPanel extends JPanel {
                     }
 
                 }else {
-                    JOptionPane.showMessageDialog(null,"Erreur dans la creation de client ");
+                    String errors = "";
+
+                    for (Map.Entry<String, String> error : validator.getErrors().entrySet()) {
+                        errors= error.getKey()+""+error.getValue()+"\n";
+
+                    }
+                    JOptionPane.showMessageDialog(null,"Erreur dans la creation de client\n "+errors);
                     System.out.println("impossible de cree le client");
-                    validator.getErrors().forEach((s, s2) -> {
-                        System.out.println(s +" "+ s2);
-                    });
                 }
             }
         });

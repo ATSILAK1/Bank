@@ -13,6 +13,18 @@ public class TableAccountPanel extends JPanel {
     private TableAccountModel tableModele;
     private JScrollPane scrollPanel ;
 
+    public JTable getTable() {
+        return table;
+    }
+
+    public TableAccountModel getTableModele() {
+        return tableModele;
+    }
+
+    public JScrollPane getScrollPanel() {
+        return scrollPanel;
+    }
+
     CompteDao compteDao = new CompteDao();
 
     private void initpanel()

@@ -19,6 +19,8 @@ public class SideMenuPanel extends JPanel {
             JButton btn= new JButton(nameOfButtons);
             btn.setFont(panelFont);
             btn.setForeground(backGroundColor);
+            btn.setSize(getMaximumSize());
+
             buttons.put(nameOfButtons,btn);
         });
     }
@@ -43,7 +45,7 @@ public class SideMenuPanel extends JPanel {
     {
         initbuttons(buttonsName);
         setBackground(backGroundColor);
-        setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+        setLayout(new GridLayout(buttons.size(),1));
         buttons.forEach((name,buttons) -> add(buttons));
     }
 }

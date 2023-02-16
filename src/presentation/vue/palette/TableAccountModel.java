@@ -23,7 +23,7 @@ public class TableAccountModel extends AbstractTableModel {
 
     public String[] initClientColumns()
     {
-        return null;
+        return null ;
     }
 
     public void initCompteData(List<Compte> comptes)

@@ -38,8 +38,7 @@ public class TableModele extends AbstractTableModel {
             data[i][3] = client.getEmail();
             data[i][4] = client.getTel();
             data[i][5] = client.getCin();
-            data[i][6] = client.getSolde();
-            data[i][7] = client.getLogin();
+            data[i][6] = client.getLogin();
 
 
             i++;
